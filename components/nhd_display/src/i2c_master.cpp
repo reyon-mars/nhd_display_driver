@@ -19,7 +19,7 @@ I2CMaster::I2CMaster(i2c_port_t port, gpio_num_t sda, gpio_num_t scl, uint32_t f
     }
 }
 
-esp_err_t I2CMaster::write( uint8_t addr, const uint8_t *data, size_t len ) const
+esp_err_t I2CMaster::write(uint8_t addr, const uint8_t *data, size_t len) const
 {
     return i2c_master_write_to_device(portNum, addr, data, len, pdMS_TO_TICKS(1000));
 }

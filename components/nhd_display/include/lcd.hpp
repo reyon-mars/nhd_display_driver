@@ -8,6 +8,8 @@
 #include "i2c_master.hpp"
 #include "gpio_pin.hpp"
 #include "esp_log.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 
 class NHDLcd
 {
@@ -15,7 +17,7 @@ public:
     explicit NHDLcd(const I2CMaster &i2c, const gpio_num_t rstPin, const gpio_num_t bcklghtPin, const gpio_num_t enPin);
     void reset(void);
     void sendCommand(uint8_t cmd) const;
-    void sendVarCommand(uint8_t* cmd, const size_t cmdLen) const;
+    void sendVarCommand(uint8_t *cmd, const size_t cmdLen) const;
     void sendData(uint8_t data_byte) const;
     void display(const std::string_view &str) const;
     void display(int number) const;
